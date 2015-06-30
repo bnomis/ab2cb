@@ -1,0 +1,6 @@
+###A9AdsMiddleBoxTop
+thedailygreen.com#@##AD_banner
+sprouts.com,tbns.com.au#@##AdImage
+santander.co.uk#@#a[href^="http://ad-emea.doubleclick.net/"]
+search.safefinder.com,search.snapdo.com###ABottomD
+tweakguides.com###adbar > br + p[style="text-align: center"] + p[style="text-align: center"]

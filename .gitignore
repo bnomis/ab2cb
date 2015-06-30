@@ -55,3 +55,12 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Debug log
+debug.log.*
+
+# dev testing build
+dev/
+
+# READMEs generated from README.md
+docs/
