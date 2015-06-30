@@ -44,20 +44,22 @@ except:
 
 # https://pypi.python.org/pypi?%3Aaction=list_classifiers
 classifiers = [
-    'Development Status :: 5 - Production/Stable',
+    'Development Status :: 3 - Alpha',
     'Environment :: Console',
+    'Environment :: Web Environment',
     'Intended Audience :: Developers',
     'License :: OSI Approved :: MIT License',
     'Natural Language :: English',
     'Operating System :: POSIX',
     "Programming Language :: Python :: 2.7",
     "Programming Language :: Python :: 3.4",
-    'Topic :: Office/Business :: Office Suites',
+    'Topic :: Security',
     'Topic :: Text Processing',
-    'Topic :: Utilities'
+    'Topic :: Utilities',
+    'Topic :: Text Processing :: Filters',
 ]
 
-keywords = ['web', 'privacy']
+keywords = ['advertising', 'privacy', 'web']
 platforms = ['macosx', 'linux', 'unix']
 
 setup(
