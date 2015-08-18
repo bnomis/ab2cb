@@ -1,6 +1,0 @@
-&ad_box_
-&ad_channel=
-+advertorial.
-&prvtof=*&poru=
--ad-180x150px.
-://findnsave.*.*/api/groupon.json?

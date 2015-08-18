@@ -1,2 +1,0 @@
-||admngronline.com^$popup,third-party
-||bet365.com^*affiliate=$popup

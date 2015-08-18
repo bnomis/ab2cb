@@ -1,4 +1,0 @@
-@@||google.com/recaptcha/$domain=mediafire.com
-@@||ad4.liverail.com/?compressed|$domain=majorleaguegaming.com|pbs.org|wikihow.com
-@@||advertising.autotrader.co.uk^$~third-party
-@@||advertising.racingpost.com^$image,script,stylesheet,~third-party,xmlhttprequest
