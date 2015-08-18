@@ -298,28 +298,37 @@ def filter_from_text(text):
     return regex_from_text(text)
 
 
+def ab2cb_fp(options, fp):
+    rules = []
+    for l in fp.readlines():
+        l = l.strip()
+        if not l:
+            continue
+        if l[0] == '[':
+            continue
+        if l[0] == '!':
+            continue
+        
+        rule = filter_from_text(l)
+        if rule:
+            rules.append(rule)
+    return rules
+
+
 def ab2cb_file(options, path):
     if not check_file_access(options, path):
         return
 
     rules = []
     with open(path) as fp:
-        for l in fp.readlines():
-            l = l.strip()
-            if not l:
-                continue
-            if l[0] == '[':
-                continue
-            if l[0] == '!':
-                continue
-            
-            rule = filter_from_text(l)
-            if rule:
-                rules.append(rule)
+        rules = ab2cb_fp(options, fp)
     return rules
 
 
 def write_rules(options, rules):
+    if not rules:
+        return
+    
     fp = options.stdout
     if options.output:
         try:
@@ -343,9 +352,12 @@ def write_rules(options, rules):
 
 def ab2cb(options):
     rules = []
-    for f in options.files:
-        file_rules = ab2cb_file(options, f)
-        rules.extend(file_rules)
+    if options.files:
+        for f in options.files:
+            file_rules = ab2cb_file(options, f)
+            rules.extend(file_rules)
+    else:
+        rules = ab2cb_fp(options, options.stdin)
     write_rules(options, rules)
 
 

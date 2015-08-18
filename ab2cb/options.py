@@ -9,7 +9,7 @@ from . import __version__
 
 # put these string here so we can import them for testing
 program_name = 'ab2cb'
-usage_string = '%(prog)s [options] File [File ...]'
+usage_string = '%(prog)s [options] [File ...]'
 version_string = '%(prog)s %(version)s' % {'prog': program_name, 'version': __version__}
 description_string = '''ab2cb: convert AdBlock content filters to Safari Content Blockers'''
 
@@ -53,8 +53,8 @@ def parse_opts(argv, stdin=None, stdout=None, stderr=None):
     parser.add_argument(
         'files',
         metavar='File',
-        nargs='+',
-        help='Files to extract from'
+        nargs='*',
+        help='Files to extract from. If not given read from stdin.'
     )
 
     # print('argv = %s' % argv)
