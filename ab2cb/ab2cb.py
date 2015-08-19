@@ -346,8 +346,7 @@ def write_rules(options, rules):
         else:
             black.append(r)
     
-    json.dump(black, fp, indent=4)
-    json.dump(white, fp, indent=4)
+    json.dump(black + white, fp, indent=4)
 
 
 def ab2cb(options):

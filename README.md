@@ -6,16 +6,22 @@ The `ab2cb` script reads filter lists as used by AdBlock Plus and produces a JSO
 
 Documentation on Content Blockers is a bit sparse. The best source seems to be reading the Safari test source code.
 
+## Examples
+
+
+curl -s https://easylist-downloads.adblockplus.org/easylist.txt | ab2cb > blockList.json
+
+
 ## Usage
 
 ```shell
 $ ab2cb -h
-usage: ab2cb [options] File [File ...]
+usage: ab2cb [options] [File ...]
 
 ab2cb: convert AdBlock content filters to Safari Content Blockers
 
 positional arguments:
-  File                  Files to extract from
+  File                  Files to extract from. If not given read from stdin.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -27,12 +33,17 @@ optional arguments:
                         stdout.
 ```
 
-##  Run Without Installing
+
+##  To Run Without Installing
 
 1. Clone this repo
 2. cd to the repo
 3. Activate with the command: `source bin/activate.sh`
 4. Run `ab2cb -h`
+
+## Testing
+
+lkjaflkadf
 
 ## References
 
