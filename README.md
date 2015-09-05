@@ -6,11 +6,20 @@ The `ab2cb` script reads filter lists as used by AdBlock Plus and produces a JSO
 
 Documentation on Content Blockers is a bit sparse. The best source seems to be reading the Safari test source code.
 
+
 ## Examples
 
+### Convert  A File
 
-curl -s https://easylist-downloads.adblockplus.org/easylist.txt | ab2cb > blockList.json
+```shell
+$ ab2cb -o blockList.json easylist.txt
+```
 
+### Read From stdin and Write To stdout
+
+```shell
+$ curl -s https://easylist-downloads.adblockplus.org/easylist.txt | ab2cb > blockList.json
+```
 
 ## Usage
 
@@ -38,12 +47,21 @@ optional arguments:
 
 1. Clone this repo
 2. cd to the repo
-3. Activate with the command: `source bin/activate.sh`
+3. Activate with the command: `. bin/activate.sh`
 4. Run `ab2cb -h`
+
 
 ## Testing
 
-lkjaflkadf
+Assuming you have `tox` and `pytest` installed, just type `tox` in this directory.
+
+
+### Testing filters
+
+Currently this is manual: you have to load the content blocker json into Safari, navigate to a test page and check the blocking using the web inspector. I'm working on automating this.
+
+There is a small JavaScript file in the test directory called `check.js` that will load a json file and check the regex compiles.
+
 
 ## References
 
