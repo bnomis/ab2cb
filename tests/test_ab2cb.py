@@ -6,11 +6,12 @@ import pytest
 
 import ab2cb.ab2cb
 
+
 class ABCB(object):
     def __init__(self, ab=None, cb=None):
         self.ab = ab or ''
         self.cb = cb or {}
-    
+
     def __eq__(self, other):
         return (self.ab == other.ab) and (self.cb == other.cb)
 
@@ -153,8 +154,6 @@ element_hiding = [
 ]
 
 
-
-
 popups = [
     ABCB(ab='||admngronline.com^$popup,third-party', cb={
         "action": {
@@ -181,13 +180,8 @@ popups = [
             ]
         }
     }),
-    
+
 ]
-
-
-
-
-
 
 
 third_party = [
@@ -215,146 +209,146 @@ third_party = [
     }),
     ABCB(ab='||doubleclick.net^$third-party,domain=3news.co.nz|92q.com|abc-7.com|addictinggames.com|allbusiness.com|allthingsd.com|bizjournals.com|bloomberg.com|bnn.ca|boom92houston.com|boom945.com|boomphilly.com|break.com|cbc.ca|cbs19.tv|cbs3springfield.com|cbsatlanta.com|cbslocal.com|complex.com|dailymail.co.uk|darkhorizons.com|doubleviking.com|euronews.com|extratv.com|fandango.com|fox19.com|fox5vegas.com|gorillanation.com|hawaiinewsnow.com|hellobeautiful.com|hiphopnc.com|hot1041stl.com|hothiphopdetroit.com|hotspotatl.com|hulu.com|imdb.com|indiatimes.com|indyhiphop.com|ipowerrichmond.com|joblo.com|kcra.com|kctv5.com|ketv.com|koat.com|koco.com|kolotv.com|kpho.com|kptv.com|ksat.com|ksbw.com|ksfy.com|ksl.com|kypost.com|kysdc.com|live5news.com|livestation.com|livestream.com|metro.us|metronews.ca|miamiherald.com|my9nj.com|myboom1029.com|mycolumbusmagic.com|mycolumbuspower.com|myfoxdetroit.com|myfoxorlando.com|myfoxphilly.com|myfoxphoenix.com|myfoxtampabay.com|nbcrightnow.com|neatorama.com|necn.com|neopets.com|news.com.au|news4jax.com|newsone.com|nintendoeverything.com|oldschoolcincy.com|own3d.tv|pagesuite-professional.co.uk|pandora.com|player.theplatform.com|ps3news.com|radio.com|radionowindy.com|rottentomatoes.com|sbsun.com|shacknews.com|sk-gaming.com|ted.com|thebeatdfw.com|theboxhouston.com|theglobeandmail.com|timesnow.tv|tv2.no|twitch.tv|universalsports.com|ustream.tv|wapt.com|washingtonpost.com|wate.com|wbaltv.com|wcvb.com|wdrb.com|wdsu.com|wflx.com|wfmz.com|wfsb.com|wgal.com|whdh.com|wired.com|wisn.com|wiznation.com|wlky.com|wlns.com|wlwt.com|wmur.com|wnem.com|wowt.com|wral.com|wsj.com|wsmv.com|wsvn.com|wtae.com|wthr.com|wxii12.com|wyff4.com|yahoo.com|youtube.com|zhiphopcleveland.com', cb={
         "action": {
-             "type": "block"
-         },
-         "trigger": {
-             "url-filter": "^https?://doubleclick\\.net(?:[\\x00-\\x24\\x26-\\x2C\\x2F\\x3A-\\x40\\x5B-\\x5E\\x60\\x7B-\\x7F]|$)",
-             "load-type": [
-                 "third-party"
-             ],
-             "if-domain": [
-                 "3news.co.nz",
-                 "92q.com",
-                 "abc-7.com",
-                 "addictinggames.com",
-                 "allbusiness.com",
-                 "allthingsd.com",
-                 "bizjournals.com",
-                 "bloomberg.com",
-                 "bnn.ca",
-                 "boom92houston.com",
-                 "boom945.com",
-                 "boomphilly.com",
-                 "break.com",
-                 "cbc.ca",
-                 "cbs19.tv",
-                 "cbs3springfield.com",
-                 "cbsatlanta.com",
-                 "cbslocal.com",
-                 "complex.com",
-                 "dailymail.co.uk",
-                 "darkhorizons.com",
-                 "doubleviking.com",
-                 "euronews.com",
-                 "extratv.com",
-                 "fandango.com",
-                 "fox19.com",
-                 "fox5vegas.com",
-                 "gorillanation.com",
-                 "hawaiinewsnow.com",
-                 "hellobeautiful.com",
-                 "hiphopnc.com",
-                 "hot1041stl.com",
-                 "hothiphopdetroit.com",
-                 "hotspotatl.com",
-                 "hulu.com",
-                 "imdb.com",
-                 "indiatimes.com",
-                 "indyhiphop.com",
-                 "ipowerrichmond.com",
-                 "joblo.com",
-                 "kcra.com",
-                 "kctv5.com",
-                 "ketv.com",
-                 "koat.com",
-                 "koco.com",
-                 "kolotv.com",
-                 "kpho.com",
-                 "kptv.com",
-                 "ksat.com",
-                 "ksbw.com",
-                 "ksfy.com",
-                 "ksl.com",
-                 "kypost.com",
-                 "kysdc.com",
-                 "live5news.com",
-                 "livestation.com",
-                 "livestream.com",
-                 "metro.us",
-                 "metronews.ca",
-                 "miamiherald.com",
-                 "my9nj.com",
-                 "myboom1029.com",
-                 "mycolumbusmagic.com",
-                 "mycolumbuspower.com",
-                 "myfoxdetroit.com",
-                 "myfoxorlando.com",
-                 "myfoxphilly.com",
-                 "myfoxphoenix.com",
-                 "myfoxtampabay.com",
-                 "nbcrightnow.com",
-                 "neatorama.com",
-                 "necn.com",
-                 "neopets.com",
-                 "news.com.au",
-                 "news4jax.com",
-                 "newsone.com",
-                 "nintendoeverything.com",
-                 "oldschoolcincy.com",
-                 "own3d.tv",
-                 "pagesuite-professional.co.uk",
-                 "pandora.com",
-                 "player.theplatform.com",
-                 "ps3news.com",
-                 "radio.com",
-                 "radionowindy.com",
-                 "rottentomatoes.com",
-                 "sbsun.com",
-                 "shacknews.com",
-                 "sk-gaming.com",
-                 "ted.com",
-                 "thebeatdfw.com",
-                 "theboxhouston.com",
-                 "theglobeandmail.com",
-                 "timesnow.tv",
-                 "tv2.no",
-                 "twitch.tv",
-                 "universalsports.com",
-                 "ustream.tv",
-                 "wapt.com",
-                 "washingtonpost.com",
-                 "wate.com",
-                 "wbaltv.com",
-                 "wcvb.com",
-                 "wdrb.com",
-                 "wdsu.com",
-                 "wflx.com",
-                 "wfmz.com",
-                 "wfsb.com",
-                 "wgal.com",
-                 "whdh.com",
-                 "wired.com",
-                 "wisn.com",
-                 "wiznation.com",
-                 "wlky.com",
-                 "wlns.com",
-                 "wlwt.com",
-                 "wmur.com",
-                 "wnem.com",
-                 "wowt.com",
-                 "wral.com",
-                 "wsj.com",
-                 "wsmv.com",
-                 "wsvn.com",
-                 "wtae.com",
-                 "wthr.com",
-                 "wxii12.com",
-                 "wyff4.com",
-                 "yahoo.com",
-                 "youtube.com",
-                 "zhiphopcleveland.com"
-             ]
-         }
+            "type": "block"
+        },
+        "trigger": {
+            "url-filter": "^https?://doubleclick\\.net(?:[\\x00-\\x24\\x26-\\x2C\\x2F\\x3A-\\x40\\x5B-\\x5E\\x60\\x7B-\\x7F]|$)",
+            "load-type": [
+                "third-party"
+            ],
+            "if-domain": [
+                "3news.co.nz",
+                "92q.com",
+                "abc-7.com",
+                "addictinggames.com",
+                "allbusiness.com",
+                "allthingsd.com",
+                "bizjournals.com",
+                "bloomberg.com",
+                "bnn.ca",
+                "boom92houston.com",
+                "boom945.com",
+                "boomphilly.com",
+                "break.com",
+                "cbc.ca",
+                "cbs19.tv",
+                "cbs3springfield.com",
+                "cbsatlanta.com",
+                "cbslocal.com",
+                "complex.com",
+                "dailymail.co.uk",
+                "darkhorizons.com",
+                "doubleviking.com",
+                "euronews.com",
+                "extratv.com",
+                "fandango.com",
+                "fox19.com",
+                "fox5vegas.com",
+                "gorillanation.com",
+                "hawaiinewsnow.com",
+                "hellobeautiful.com",
+                "hiphopnc.com",
+                "hot1041stl.com",
+                "hothiphopdetroit.com",
+                "hotspotatl.com",
+                "hulu.com",
+                "imdb.com",
+                "indiatimes.com",
+                "indyhiphop.com",
+                "ipowerrichmond.com",
+                "joblo.com",
+                "kcra.com",
+                "kctv5.com",
+                "ketv.com",
+                "koat.com",
+                "koco.com",
+                "kolotv.com",
+                "kpho.com",
+                "kptv.com",
+                "ksat.com",
+                "ksbw.com",
+                "ksfy.com",
+                "ksl.com",
+                "kypost.com",
+                "kysdc.com",
+                "live5news.com",
+                "livestation.com",
+                "livestream.com",
+                "metro.us",
+                "metronews.ca",
+                "miamiherald.com",
+                "my9nj.com",
+                "myboom1029.com",
+                "mycolumbusmagic.com",
+                "mycolumbuspower.com",
+                "myfoxdetroit.com",
+                "myfoxorlando.com",
+                "myfoxphilly.com",
+                "myfoxphoenix.com",
+                "myfoxtampabay.com",
+                "nbcrightnow.com",
+                "neatorama.com",
+                "necn.com",
+                "neopets.com",
+                "news.com.au",
+                "news4jax.com",
+                "newsone.com",
+                "nintendoeverything.com",
+                "oldschoolcincy.com",
+                "own3d.tv",
+                "pagesuite-professional.co.uk",
+                "pandora.com",
+                "player.theplatform.com",
+                "ps3news.com",
+                "radio.com",
+                "radionowindy.com",
+                "rottentomatoes.com",
+                "sbsun.com",
+                "shacknews.com",
+                "sk-gaming.com",
+                "ted.com",
+                "thebeatdfw.com",
+                "theboxhouston.com",
+                "theglobeandmail.com",
+                "timesnow.tv",
+                "tv2.no",
+                "twitch.tv",
+                "universalsports.com",
+                "ustream.tv",
+                "wapt.com",
+                "washingtonpost.com",
+                "wate.com",
+                "wbaltv.com",
+                "wcvb.com",
+                "wdrb.com",
+                "wdsu.com",
+                "wflx.com",
+                "wfmz.com",
+                "wfsb.com",
+                "wgal.com",
+                "whdh.com",
+                "wired.com",
+                "wisn.com",
+                "wiznation.com",
+                "wlky.com",
+                "wlns.com",
+                "wlwt.com",
+                "wmur.com",
+                "wnem.com",
+                "wowt.com",
+                "wral.com",
+                "wsj.com",
+                "wsmv.com",
+                "wsvn.com",
+                "wtae.com",
+                "wthr.com",
+                "wxii12.com",
+                "wyff4.com",
+                "yahoo.com",
+                "youtube.com",
+                "zhiphopcleveland.com"
+            ]
+        }
     }),
     ABCB(ab='||dt00.net^$third-party,domain=~marketgid.com|~marketgid.ru|~marketgid.ua|~mgid.com|~thechive.com', cb={
         "action": {
@@ -399,12 +393,8 @@ third_party = [
             "url-filter": "^https?://d1noellhv8fksc\\.cloudfront\\.net(?:[\\x00-\\x24\\x26-\\x2C\\x2F\\x3A-\\x40\\x5B-\\x5E\\x60\\x7B-\\x7F]|$)"
         }
     }),
-    
+
 ]
-
-
-
-
 
 
 whitelist = [
@@ -463,13 +453,13 @@ class TestABCB(object):
         a = ABCB()
         b = ABCB()
         assert a == b
-    
+
         ab = 'string'
-        
+
         a = ABCB(ab=ab)
         b = ABCB(ab=ab)
         assert a == b
-    
+
         cb = {
             "action": {
                 "type": "block"
@@ -478,16 +468,15 @@ class TestABCB(object):
                 "url-filter": "://findnsave\\..*\\..*/api/groupon\\.json\\?"
             }
         }
-    
+
         a = ABCB(cb=cb)
         b = ABCB(cb=cb)
         assert a == b
-        
+
         a = ABCB(ab=ab, cb=cb)
         b = ABCB(ab=ab, cb=cb)
         assert a == b
-    
-    
+
     def test_neq(self):
         ab = 'string'
         cb = {
@@ -498,11 +487,11 @@ class TestABCB(object):
                 "url-filter": "://findnsave\\..*\\..*/api/groupon\\.json\\?"
             }
         }
-        
+
         a = ABCB()
         b = ABCB(ab=ab)
         assert a != b
-    
+
         a = ABCB()
         b = ABCB(cb=cb)
         assert a != b
@@ -545,4 +534,3 @@ class TestWhiteList(object):
     def test_whitelist(self, abcb):
         out = abcb_from_text(abcb.ab)
         assert out == abcb
-        

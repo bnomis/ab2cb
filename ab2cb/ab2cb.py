@@ -18,25 +18,25 @@ regexpRegExp = re.compile(r'^(@@)?\/.*\/(?:\$~?[\w\-]+(?:=[^,\s]+)?(?:,~?[\w\-]+
 optionsRegExp = re.compile(r'\$(~?[\w\-]+(?:=[^,\s]+)?(?:,~?[\w\-]+(?:=[^,\s]+)?)*)$')
 
 RegExpFilter_typeMap = {
-  'OTHER': 1,
-  'SCRIPT': 2,
-  'IMAGE': 4,
-  'STYLESHEET': 8,
-  'OBJECT': 16,
-  'SUBDOCUMENT': 32,
-  'DOCUMENT': 64,
-  'XBL': 1,
-  'PING': 1,
-  'XMLHTTPREQUEST': 2048,
-  'OBJECT_SUBREQUEST': 4096,
-  'DTD': 1,
-  'MEDIA': 16384,
-  'FONT': 32768,
+    'OTHER': 1,
+    'SCRIPT': 2,
+    'IMAGE': 4,
+    'STYLESHEET': 8,
+    'OBJECT': 16,
+    'SUBDOCUMENT': 32,
+    'DOCUMENT': 64,
+    'XBL': 1,
+    'PING': 1,
+    'XMLHTTPREQUEST': 2048,
+    'OBJECT_SUBREQUEST': 4096,
+    'DTD': 1,
+    'MEDIA': 16384,
+    'FONT': 32768,
 
-  'BACKGROUND': 4,
+    'BACKGROUND': 4,
 
-  'POPUP': 0x10000000,
-  'ELEMHIDE': 0x40000000
+    'POPUP': 0x10000000,
+    'ELEMHIDE': 0x40000000
 }
 
 RegExpFilter_prototype_contentType = 0x7FFFFFFF
@@ -46,17 +46,17 @@ RegExpFilter_prototype_contentType &= ~(RegExpFilter_typeMap['DOCUMENT'] | RegEx
 
 # clean up a regex
 regex_cleaners = [
-    (re.compile(r'\*+'), r"*"),   # remove multiple wildcards
-    (re.compile(r'\^\|$'), r"^"), # remove anchors following separator placeholder
-    (re.compile(r'([.*+?^${}()|[\]\\])'), r"\\\1"), # escape special symbols
-    (re.compile(r'\\\*'), r".*"), # replace wildcards by .*
+    (re.compile(r'\*+'), r"*"),    # remove multiple wildcards
+    (re.compile(r'\^\|$'), r"^"),  # remove anchors following separator placeholder
+    (re.compile(r'([.*+?^${}()|[\]\\])'), r"\\\1"),  # escape special symbols
+    (re.compile(r'\\\*'), r".*"),  # replace wildcards by .*
     # process separator placeholders (all ANSI characters but alphanumeric characters and _%.-)
     (re.compile(r'\\\^'), r"(?:[\\x00-\\x24\\x26-\\x2C\\x2F\\x3A-\\x40\\x5B-\\x5E\\x60\\x7B-\\x7F]|$)"),
     #(re.compile(r'\\\|\\\|'), r"^[\\w\\-]+:\\/+(?!\\/)(?:[^\\/]+\\.)?"), # process extended anchor at expression start
     (re.compile(r'^\\\|'), r"^"),  # process anchor at expression start
     (re.compile(r'\\\|$'), r"$"),  # process anchor at expression end
-    (re.compile(r'^(\\\.\\\*)'), r''), # remove leading wildcards
-    (re.compile(r'(\\\.\\\*)$'), r''), # remove trailing wildcards
+    (re.compile(r'^(\\\.\\\*)'), r''),  # remove leading wildcards
+    (re.compile(r'(\\\.\\\*)$'), r''),  # remove trailing wildcards
 ]
 
 
@@ -106,12 +106,11 @@ def check_file_access(options, path):
 
 def elem_hide_from_text(text, domain, isException, tagName, attrRules, selector):
     #print("Hide: '%s' '%s' '%s' '%s' '%s' '%s'" % (text, domain, isException, tagName, attrRules, selector))
-    pass
     filter = {
-        'trigger':{
+        'trigger': {
             'url-filter': '.*'
         },
-        'action':{
+        'action': {
             'type': 'css-display-none',
             'selector': selector
         }
@@ -121,8 +120,9 @@ def elem_hide_from_text(text, domain, isException, tagName, attrRules, selector)
             filter['trigger']['unless-domain'] = domain.split(',')
         else:
             filter['trigger']['if-domain'] = domain.lower().split(',')
-            
+
     return filter
+
 
 def regex_filter(origText, regexpSource, contentType, matchCase, domains, thirdParty, sitekeys):
     anchor = False
@@ -139,20 +139,20 @@ def regex_filter(origText, regexpSource, contentType, matchCase, domains, thirdP
             #print('In: %s' % regex)
             regex = r[0].sub(r[1], regex)
             #print('Out: %s' % regex)
-            
+
         #print('Before: %s  After: %s' % (regexpSource, regex))
-    
+
     if regex[0:3] != '://':
         if not anchor:
             regex = '^https?://.*' + regex
         else:
             regex = '^https?://' + regex
-            
+
     filter = {
-        'trigger':{
+        'trigger': {
             'url-filter': regex
         },
-        'action':{
+        'action': {
             'type': 'block'
         }
     }
@@ -170,7 +170,7 @@ def regex_filter(origText, regexpSource, contentType, matchCase, domains, thirdP
             filter['trigger']['if-domain'] = ifd
         if unl:
             filter['trigger']['unless-domain'] = unl
-    
+
     if contentType:
         rt = []
         if contentType & RegExpFilter_typeMap['DOCUMENT']:
@@ -228,7 +228,7 @@ def regex_from_text(text):
     dollar_pos = text.find('$')
     if dollar_pos >= 0:
         match = optionsRegExp.search(text)
-        
+
     # read the options
     if match:
         options = match.group(1).upper().split(",")
@@ -243,46 +243,46 @@ def regex_from_text(text):
                     print('bad value')
                     pass
                 option = option[:separatorIndex]
-            
+
             option = option.replace('-', "_")
             if option in RegExpFilter_typeMap:
                 if contentType is None:
                     contentType = 0
                 contentType |= RegExpFilter_typeMap[option]
-            
+
             elif option[0] == "~" and option[1:] in RegExpFilter_typeMap:
                 if contentType is None:
                     contentType = RegExpFilter_prototype_contentType
                 contentType &= ~RegExpFilter_typeMap[option[1:]]
-            
+
             elif option == "MATCH_CASE":
                 matchCase = True
-             
+
             elif option == "~MATCH_CASE":
                 matchCase = False
-             
+
             elif option == "DOMAIN" and value:
                 domains = value
-            
+
             elif option == "THIRD_PARTY":
                 thirdParty = True
-            
+
             elif option == "~THIRD_PARTY":
                 thirdParty = False
-            
+
             elif option == "COLLAPSE":
                 collapse = True
-            
+
             elif option == "~COLLAPSE":
                 collapse = False
-            
+
             elif option == "SITEKEY" and value:
                 sitekeys = value
-            
+
             else:
                 print('Invalid: %s' % origText)
                 return None
-    
+
     if blocking:
         return blocking_filter(origText, text, contentType, matchCase, domains, thirdParty, sitekeys, collapse)
     return whitelist_filter(origText, text, contentType, matchCase, domains, thirdParty, sitekeys)
@@ -308,7 +308,7 @@ def ab2cb_fp(options, fp):
             continue
         if l[0] == '!':
             continue
-        
+
         rule = filter_from_text(l)
         if rule:
             rules.append(rule)
@@ -328,16 +328,16 @@ def ab2cb_file(options, path):
 def write_rules(options, rules):
     if not rules:
         return
-    
+
     fp = options.stdout
     if options.output:
         try:
             fp = open(options.output, 'w')
         except Exception as e:
             writerr_file_access(options, 'Cannot open output file: %s' % options.output)
-            error('write_rules: exception for %s: %s' % (path, e), exc_info=True)
+            error('write_rules: exception for %s: %s' % (options.output, e), exc_info=True)
             return
-    
+
     black = []
     white = []
     for r in rules:
@@ -345,7 +345,7 @@ def write_rules(options, rules):
             white.append(r)
         else:
             black.append(r)
-    
+
     json.dump(black + white, fp, indent=4)
 
 

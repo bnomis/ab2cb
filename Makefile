@@ -3,7 +3,7 @@ PYFLAKES := pyflakes
 FLAKE8 := flake8
 
 RM := rm -rf
-src := src/ab2cb/*.py
+src := ab2cb/*.py tests/*.py *.py
 PANDOC := pandoc
 RST2HTML := rst2html-2.7.py
 PYTHON := python

@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 import os
 import os.path
-import stat
 import sys
 
 from setuptools import setup, find_packages
@@ -17,12 +16,12 @@ class Tox(TestCommand):
     def initialize_options(self):
         TestCommand.initialize_options(self)
         self.tox_args = None
-    
+
     def finalize_options(self):
         TestCommand.finalize_options(self)
         self.test_args = []
         self.test_suite = True
-    
+
     def run_tests(self):
         import tox
         import shlex
@@ -75,7 +74,7 @@ setup(
     classifiers=classifiers,
     keywords=keywords,
     platforms=platforms,
-    
+
     packages=find_packages(exclude=['tests']),
 
     entry_points={
