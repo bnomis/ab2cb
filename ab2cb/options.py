@@ -51,6 +51,14 @@ def parse_opts(argv, stdin=None, stdout=None, stderr=None):
     )
 
     parser.add_argument(
+        '--no-white',
+        dest='no_white',
+        action='store_true',
+        default=False,
+        help='Do not produce white list rules.'
+    )
+
+    parser.add_argument(
         'files',
         metavar='File',
         nargs='*',
