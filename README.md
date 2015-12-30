@@ -48,7 +48,8 @@ optional arguments:
 1. Clone this repo
 2. cd to the repo
 3. Activate with the command: `. bin/activate.sh`
-4. Run `ab2cb -h`
+4. Make the dev environment with the command: `make dev`
+5. Run `ab2cb -h`
 
 
 ## Testing
