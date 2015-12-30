@@ -40,6 +40,7 @@ optional arguments:
   -o FILE, --output FILE
                         Save converted text to FILE. If not given, output to
                         stdout.
+  --no-white            Do not produce white list rules.
 ```
 
 
